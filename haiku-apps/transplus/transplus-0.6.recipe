@@ -14,7 +14,7 @@ CHECKSUM_SHA256="81f574f840a16d3c306f3b0cffbeb87595cfa678145c3613e9b3077c46a46df
 REVISION="1"
 
 LICENSE="GNU GPL v2"
-COPYRIGHT="2000-2013 mwhitehorn"
+COPYRIGHT="2000 Nathan Whitehorn"
 
 PROVIDES="transplus = $portVersion
 			lib:Transplus = $portVersion"
