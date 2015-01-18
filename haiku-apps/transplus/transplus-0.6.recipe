@@ -1,0 +1,50 @@
+DESCRIPTION="Translator Plus is an extension to the data-stream \
+translation kit that is aimed at document file-types. For now, only HTML \
+and plain text are supported."
+
+SUMMARY="Extension to the data-stream translation kit aimed at \	 
+document file-types"
+
+HOMEPAGE="http://github.com/HaikuArchives/TransPlus"
+
+SRC_URI="https://codeload.github.com/HaikuArchives/TransPlus/zip/133756bef328a9d06b804968f789d8b3126bc3ae"
+CHECKSUM_SHA256="81f574f840a16d3c306f3b0cffbeb87595cfa678145c3613e9b3077c46a46dfe"
+
+
+REVISION="1"
+
+LICENSE="GNU GPL v2"
+COPYRIGHT="2000-2013 mwhitehorn"
+
+PROVIDES="transplus = $portVersion
+			lib:Transplus = $portVersion"
+ARCHITECTURES="x86_gcc2 ?x86 ?x86_64"
+
+BUILD_PREREQUIRES=""
+BUILD_REQUIRES="haiku_devel
+			makefile_engine
+			cmd:make
+			cmd:gcc"
+REQUIRES="haiku"
+SOURCE_DIR=""
+
+BUILD()
+{
+#Folder gets renamed so SRCS does not have to be changed every time
+mv TransPlus-133756bef328a9d06b804968f789d8b3126bc3ae TransPlus
+
+cd TransPlus/src
+make OBJ_DIR=objects
+make OBJ_DIR=objects -f make2
+make OBJ_DIR=objects -f make3
+}
+
+INSTALL()
+{
+     cd TransPlus/objects
+     mkdir -p $addOnsDir/Translators/
+     mkdir -p $libDir
+     cp libtransplus.so $libDir
+     cp HTML $addOnsDir/Translators/
+     cp PlainText $addOnsDir/Translators/
+}
