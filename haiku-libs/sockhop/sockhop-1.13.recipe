@@ -1,0 +1,82 @@
+SUMMARY="Scalable distributed programming environment"
+DESCRIPTION="SockHop is a system that facilitates the development of applications \
+that run on many machines at once.&nbsp;&nbsp; It is implemented in a single \
+file (libsockhop.so) that serves as both shared library for client code, \
+and as a server program for remote program invocation and control. SockHop's \
+primary design goals are ease of use, flexibility, and scalability \
+Using SockHop, writing and debugging a program that runs on many machines \
+at once is not much harder than writing a "regular" multithreaded program.
+"
+HOMEPAGE="http://haikuarchives.github.io/SockHop/"
+SRC_URI="git+https://github.com/HaikuArchives/SockHop#edb241e6f58b462a04f2c61308d5b37a42cbaa6b"
+SOURCE_DIR=""
+REVISION="1"
+LICENSE="GNU GPL v2"
+COPYRIGHT="1999 Jeremy Friesner"
+
+ARCHITECTURES="x86_gcc2 ?x86 ?x86_64"
+
+PROVIDES="
+	sockhop = $portVersion
+	cmd:sockhop = $portVersion
+	lib:libsockhop = $portVersion
+	"
+PROVIDES_devel="
+	sockhop_devel = $portVersion
+	devel:libsockhop = $portVersion
+	"
+
+REQUIRES="
+	haiku
+	lib:libz
+	"
+REQUIRES_devel="
+	haiku_devel
+	sockhop == $portVersion base
+	"
+
+BUILD_REQUIRES="
+	haiku_devel
+	devel:libz
+	"
+BUILD_PREREQUIRES="
+	makefile_engine
+	cmd:make
+	cmd:gcc
+	cmd:mkdepend
+	"
+
+BUILD()
+{
+	cd source
+	cd libsockhop
+	make $jobArgs OBJ_DIR=objects
+	cd ../sockhop
+	make $jobArgs OBJ_DIR=objects
+}
+
+INSTALL()
+{
+	mkdir -p $binDir
+	mkdir -p $libDir
+	mkdir -p $includeDir
+
+	cp -a source/sockhop/objects/sockhop $binDir
+	cp -a source/libsockhop/objects/libsockhop.so $libDir
+	cp -R include/. $includeDir
+
+	prepareInstalledDevelLibs \
+		libsockhop
+	packageEntries devel \
+		$developDir
+}
+
+TEST() {
+	cd source/tests
+	# Yes, I know. ;)
+	for i in 1 2 3 4 6 5 7 8 10 11 12; do
+		pushd $i
+		make $jobArgs OBJ_DIR=objects
+		popd
+	done
+}
