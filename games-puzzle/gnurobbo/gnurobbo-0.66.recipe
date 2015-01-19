@@ -1,8 +1,8 @@
-SUMMARY="GNU Robbo"
-DESCRIPTION="GNU Robbo is a free open source reimplementation \
+SUMMARY="GNU Robbo: Classic Atari Puzzle Game."
+DESCRIPTION="GNU Robbo is an open source reimplementation \
 of Janusz Pelc's Robbo for the Atari XE/XL which was distributed \
 by LK Avalon in 1989. In this retro game, you can collect and reach the \
-UFO-like object. Personally, this game reminded me of Chip's Challenge."
+UFO-like object."
 HOMEPAGE="http://gnurobbo.sourceforge.net/" 
 SRC_URI="http://softlayer-dal.dl.sourceforge.net/project/gnurobbo/gnurobbo/gnurobbo 0.66/gnurobbo-0.66-source.tar.gz"
 CHECKSUM_SHA256="54d2418f49e52b8f49631eb93af7789074b628d308a6d26b00cc795ad0b04d89"
@@ -38,6 +38,9 @@ BUILD_PREREQUIRES="
 	cmd:gcc
 "
 
+PATCHES="gnurobbo-0.66.patchset
+"
+
 BUILD()
 {
 	make $jobArgs
@@ -47,6 +50,6 @@ INSTALL()
 {
 	mkdir -p $appsDir/gnurobbo
 	cp gnurobbo $appsDir/gnurobbo
-	cp -rf data $appsDir/gnurobbo
+	cp -r data $appsDir/gnurobbo
 	addAppDeskbarSymlink $appsDir/gnurobbo/gnurobbo GnuRobbo
 }
