@@ -1,5 +1,5 @@
 SUMMARY="GNU Robbo: Classic Atari Puzzle Game."
-DESCRIPTION="GNU Robbo is an open source reimplementation \
+DESCRIPTION="An open source reimplementation \
 of Janusz Pelc's Robbo for the Atari XE/XL which was distributed \
 by LK Avalon in 1989. In this retro game, you can collect and reach the \
 UFO-like object."
