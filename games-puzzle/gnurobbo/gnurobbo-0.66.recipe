@@ -1,71 +1,47 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 SUMMARY="GNU Robbo: Classic Atari Puzzle Game."
-DESCRIPTION="An open source reimplementation \
+DESCRIPTION="GNU Robbo is an open source reimplementation \
 of Janusz Pelc's Robbo for the Atari XE/XL which was distributed \
 by LK Avalon in 1989. In this retro game, you can collect and reach the \
 UFO-like object."
-=======
-SUMMARY="GNU Robbo"
-DESCRIPTION="GNU Robbo is a free open source reimplementation \
-of Janusz Pelc's Robbo for the Atari XE/XL which was distributed \
-by LK Avalon in 1989. In this retro game, you can collect and reach the \
-UFO-like object. Personally, this game reminded me of Chip's Challenge."
->>>>>>> 5ef3449... 2 updated recipes
-=======
-SUMMARY="GNU Robbo: Classic Atari Puzzle Game."
-DESCRIPTION="An open source reimplementation \
-of Janusz Pelc's Robbo for the Atari XE/XL which was distributed \
-by LK Avalon in 1989. In this retro game, you can collect and reach the \
-UFO-like object."
->>>>>>> f916e98... Updated broken bzflag; gnurobbo still needs current directory fix
 HOMEPAGE="http://gnurobbo.sourceforge.net/" 
 SRC_URI="http://softlayer-dal.dl.sourceforge.net/project/gnurobbo/gnurobbo/gnurobbo 0.66/gnurobbo-0.66-source.tar.gz"
 CHECKSUM_SHA256="54d2418f49e52b8f49631eb93af7789074b628d308a6d26b00cc795ad0b04d89"
 SOURCE_DIR="gnurobbo-0.66"
 REVISION="2"
 ARCHITECTURES="x86 x86_gcc2"
+#SECONDARY_ARCHITECTURE="gcc4"
 LICENSE="GNU LGPL v2.1"
 COPYRIGHT="2002-2010 The GNU Robbo Team"
 
 PROVIDES="
-	gnurobbo = $portVersion
-	app:gnurobbo = $portVersion
+	gnurobbo$secondaryArchSuffix = $portVersion
+	app:gnurobbo${secondaryArchSuffix} = $portVersion
 	"
  
 REQUIRES="
-	haiku
-	lib:libsdl
-	lib:libsdl_mixer
-	lib:libsdl_image
-	lib:libsdl_ttf
+	haiku$secondaryArchSuffix
+	lib:libsdl${secondaryArchSuffix}
+	lib:libsdl_mixer${secondaryArchSuffix}
+	lib:libsdl_image${secondaryArchSuffix}
+	lib:libsdl_ttf${secondaryArchSuffix}
         "
  
 BUILD_REQUIRES="
-	haiku_devel
-	devel:libsdl
-	devel:libsdl_mixer
-	devel:libsdl_image
-	devel:libsdl_ttf
+	haiku${secondaryArchSuffix}_devel
+	devel:libsdl${secondaryArchSuffix}
+	devel:libsdl_mixer${secondaryArchSuffix}
+	devel:libsdl_image${secondaryArchSuffix}
+	devel:libsdl_ttf${secondaryArchSuffix}
         "
 
 BUILD_PREREQUIRES="
 	cmd:make
-	cmd:gcc
+	cmd:gcc${secondaryArchSuffix}
 "
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 PATCHES="gnurobbo-0.66.patchset
 "
 
-=======
->>>>>>> 5ef3449... 2 updated recipes
-=======
-PATCHES="gnurobbo-0.66.patchset
-"
-
->>>>>>> f916e98... Updated broken bzflag; gnurobbo still needs current directory fix
 BUILD()
 {
 	make $jobArgs
@@ -75,14 +51,6 @@ INSTALL()
 {
 	mkdir -p $appsDir/gnurobbo
 	cp gnurobbo $appsDir/gnurobbo
-<<<<<<< HEAD
-<<<<<<< HEAD
 	cp -r data $appsDir/gnurobbo
-=======
-	cp -rf data $appsDir/gnurobbo
->>>>>>> 5ef3449... 2 updated recipes
-=======
-	cp -r data $appsDir/gnurobbo
->>>>>>> f916e98... Updated broken bzflag; gnurobbo still needs current directory fix
 	addAppDeskbarSymlink $appsDir/gnurobbo/gnurobbo GnuRobbo
 }
