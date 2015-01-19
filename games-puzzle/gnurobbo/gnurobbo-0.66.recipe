@@ -1,5 +1,6 @@
 SUMMARY="GNU Robbo: Classic Atari Puzzle Game."
 DESCRIPTION="GNU Robbo is an open source reimplementation \
+DESCRIPTION="An open source reimplementation \
 of Janusz Pelc's Robbo for the Atari XE/XL which was distributed \
 by LK Avalon in 1989. In this retro game, you can collect and reach the \
 UFO-like object."
@@ -32,11 +33,27 @@ BUILD_REQUIRES="
 	devel:libsdl_mixer${secondaryArchSuffix}
 	devel:libsdl_image${secondaryArchSuffix}
 	devel:libsdl_ttf${secondaryArchSuffix}
+	"
+ 
+REQUIRES="
+	haiku
+	lib:libsdl
+	lib:libsdl_mixer
+	lib:libsdl_image
+	lib:libsdl_ttf
+        "
+ 
+BUILD_REQUIRES="
+	haiku_devel
+	devel:libsdl
+	devel:libsdl_mixer
+	devel:libsdl_image
+	devel:libsdl_ttf
         "
 
 BUILD_PREREQUIRES="
 	cmd:make
-	cmd:gcc${secondaryArchSuffix}
+	cmd:gcc
 "
 
 PATCHES="gnurobbo-0.66.patchset
