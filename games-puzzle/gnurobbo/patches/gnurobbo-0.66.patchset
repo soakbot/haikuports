@@ -1,19 +1,19 @@
-From 368108846b1f3f3b138cfe531b47adf3d402abdf Mon Sep 17 00:00:00 2001
+From b2ae2debf06a0f7d7bf928dcd301bb2d76ed52f6 Mon Sep 17 00:00:00 2001
 From: Derek Tse <arrestrose@gmail.com>
-Date: Mon, 19 Jan 2015 21:51:28 +0000
+Date: Sat, 24 Jan 2015 05:43:37 +0000
 Subject: chdir
 
 
 diff --git a/game.c b/game.c
-index 7cc91e9..c34d660 100644
+index 7cc91e9..5e82623 100644
 --- a/game.c
 +++ b/game.c
 @@ -20,6 +20,8 @@
  
  #include <SDL/SDL_main.h>
  #include "game.h"
-+#include "unistd.h"
-+#include "libgen.h"
++#include <unistd.h>
++#include <libgen.h>
  
  #ifdef PLATFORM_PSP
  #include <pspkernel.h>
@@ -21,7 +21,7 @@ index 7cc91e9..c34d660 100644
  main (int argc, char *argv[])
  {
    int count, result, actionid;
-+chdir(dirname(argv[0]));
++	chdir(dirname(argv[0]));
  
  #ifdef DEBUG_SOUND2
  	int scnt;

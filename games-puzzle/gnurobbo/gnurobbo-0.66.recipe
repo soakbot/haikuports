@@ -7,36 +7,18 @@ UFO-like object."
 HOMEPAGE="http://gnurobbo.sourceforge.net/" 
 SRC_URI="http://softlayer-dal.dl.sourceforge.net/project/gnurobbo/gnurobbo/gnurobbo 0.66/gnurobbo-0.66-source.tar.gz"
 CHECKSUM_SHA256="54d2418f49e52b8f49631eb93af7789074b628d308a6d26b00cc795ad0b04d89"
-SOURCE_DIR="gnurobbo-0.66"
-REVISION="2"
+REVISION="1"
 ARCHITECTURES="x86 x86_gcc2"
-#SECONDARY_ARCHITECTURE="gcc4"
 LICENSE="GNU LGPL v2.1"
 COPYRIGHT="2002-2010 The GNU Robbo Team"
 
 PROVIDES="
 	gnurobbo$secondaryArchSuffix = $portVersion
-	app:gnurobbo${secondaryArchSuffix} = $portVersion
+	app:gnurobbo = $portVersion
 	"
  
 REQUIRES="
 	haiku$secondaryArchSuffix
-	lib:libsdl${secondaryArchSuffix}
-	lib:libsdl_mixer${secondaryArchSuffix}
-	lib:libsdl_image${secondaryArchSuffix}
-	lib:libsdl_ttf${secondaryArchSuffix}
-        "
- 
-BUILD_REQUIRES="
-	haiku${secondaryArchSuffix}_devel
-	devel:libsdl${secondaryArchSuffix}
-	devel:libsdl_mixer${secondaryArchSuffix}
-	devel:libsdl_image${secondaryArchSuffix}
-	devel:libsdl_ttf${secondaryArchSuffix}
-	"
- 
-REQUIRES="
-	haiku
 	lib:libsdl
 	lib:libsdl_mixer
 	lib:libsdl_image
@@ -49,7 +31,7 @@ BUILD_REQUIRES="
 	devel:libsdl_mixer
 	devel:libsdl_image
 	devel:libsdl_ttf
-        "
+	"
 
 BUILD_PREREQUIRES="
 	cmd:make
